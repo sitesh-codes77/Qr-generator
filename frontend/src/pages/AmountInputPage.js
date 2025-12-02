@@ -170,7 +170,7 @@ const AmountInputPage = () => {
             </div>
 
             <p className="text-gray-600 text-sm mb-4">
-              💡 Ask customer to scan this QR code with their mobile UPI app
+              💡 Scan to pay
             </p>
 
             {/* Download Button */}
