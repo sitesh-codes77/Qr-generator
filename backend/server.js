@@ -17,6 +17,12 @@ connectDB();
 app.use(helmet());
 app.use(cors({
   origin: function (origin, callback) {
+       const allowedOrigins = [
+      'http://localhost:3000',
+      'http://127.0.0.1:3000',
+      process.env.FRONTEND_URL,
+      process.env.CORS_ORIGIN
+    ];
     // Allow requests from localhost on any port
     if (!origin || origin.includes('localhost') || origin.includes('127.0.0.1')) {
       callback(null, true);
