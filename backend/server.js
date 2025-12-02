@@ -17,19 +17,18 @@ connectDB();
 app.use(helmet());
 app.use(cors({
   origin: function (origin, callback) {
-       const allowedOrigins = [
+    const allowedOrigins = [
       'http://localhost:3000',
       'http://127.0.0.1:3000',
+      'http://localhost:5000',
       process.env.FRONTEND_URL,
       process.env.CORS_ORIGIN
     ];
-    // Allow requests from localhost on any port
-    if (!origin || origin.includes('localhost') || origin.includes('127.0.0.1')) {
+    
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
-    } else if (process.env.CORS_ORIGIN) {
-      callback(null, process.env.CORS_ORIGIN);
     } else {
-      callback(null, true);
+      callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
